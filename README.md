@@ -146,7 +146,7 @@ var salary = 10000;
    console.log(age); //error: age is not defined(due to block scope) 
 } 
 userDetails('John');
-
+```
 
 ## 11)How do you redeclare variables in switch block without an error?
 -  If you try to redeclare variables in a switch block then it will cause errors because there is only one block. For example, the below code block throws a syntax error as below,
