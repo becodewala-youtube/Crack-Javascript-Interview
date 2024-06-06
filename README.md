@@ -145,7 +145,107 @@ var salary = 10000;
  console.log(salary); //10000 (accessible to due function scope) 
    console.log(age); //error: age is not defined(due to block scope) 
 } 
-userDetails('John'); 
+userDetails('John');
+
+
+## 11)How do you redeclare variables in switch block without an error?
+-  If you try to redeclare variables in a switch block then it will cause errors because there is only one block. For example, the below code block throws a syntax error as below,
+```bash
+let counter = 1; 
+switch(x) { 
+  case 0: 
+    let name; 
+    break; 
+  case 1: 
+    let name; // SyntaxError for redeclaration. 
+    break; 
+} 
+```
+- To avoid this error, you can create a nested block inside a case clause and create a new block scoped lexical environment.
+```bash
+let counter = 1; 
+    switch(x) { 
+      case 0: { 
+        let name; 
+        break; 
+      } 
+      case 1: { 
+        let name; // No SyntaxError for redeclaration. 
+        break; 
+      } 
+    } 
+```
+
+## 12) What is the Temporal Dead Zone?
+-  The Temporal Dead Zone is a behavior in JavaScript that occurs when declaring a variable with the let and const keywords, but not with var. In ECMAScript 6, accessing a let or const variable before its declaration (within its scope) causes a ReferenceError. The time span when  that happens, between the creation of a variable’s binding and its declaration, is called the temporal dead zone.
+-  Let's see this behavior with an example,
+```bash
+function somemethod() { 
+  console.log(counter1); // undefined 
+  console.log(counter2); // ReferenceError 
+  var counter1 = 1; 
+  let counter2 = 2; 
+}
+```
+## 13)What is the benefit of using modules?
+-  There are a lot of benefits to using modules in favour of a sprawling. Some of the benefits are,
+ i. Maintainability
+ ii. Reusability
+ iii. Namespacing
+## 14)What are classes in ES6?
+- In ES6, Javascript classes are primarily syntactic sugar over JavaScript’s existing prototype-based inheritance. For example, the prototype based inheritance written in function expression as below,
+```bash
+function Bike(model,color) { 
+this.model = model; 
+this.color = color; 
+} 
+Bike.prototype.getDetails = function() { 
+return this.model + ' bike has' + this.color + ' color'; 
+}; 
+```
+- Whereas ES6 classes can be defined as an alternative
+```bash
+class Bike{ 
+constructor(color, model) { 
+this.color= color; 
+this.model= model; 
+} 
+getDetails() { 
+return this.model + ' bike has' + this.color + ' color'; 
+} 
+}
+```
+## 15)What are closures?
+-  A closure is the combination of a function and the lexical environment within which that function was declared. i.e, It is an inner function that has access to the outer or enclosing function’s variables. The closure has three scope chains:
+-  i. Own scope where variables defined between its curly brackets ii. Outer function’s variables iii. Global variables
+-  Let's take an example of closure concept,
+```bash
+function Welcome(name){ 
+var greetingInfo = function(message){ 
+console.log(message+' '+name); 
+} 
+return greetingInfo; 
+} 
+var myFunction = Welcome('John'); 
+myFunction('Welcome '); //Output: Welcome John 
+myFunction('Hello Mr.'); //output: Hello Mr.John 
+```
+- As per the above code, the inner function(i.e, greetingInfo) has access to the variables in the outer function scope(i.e, Welcome) even after the outer function has returned.
+
+## 16)What are modules?
+-  Modules refer to small units of independent, reusable code and also act as the foundation of many JavaScript design patterns. Most of the JavaScript modules export an object literal, a function, or a constructor
+## 17) Why do you need modules?
+- Below are the list of benefits using modules in javascript ecosystem
+
+-  i. Maintainability  ii. Reusability iii. Namespacing
+## 18)What is scope in javascript?
+-  Scope is the accessibility of variables, functions, and objects in some particular part of your code during runtime. In other words, scope determines the visibility of variables and other resources in areas of your code.
+## 19)What is web storage?
+-  Web storage is an API that provides a mechanism by which browsers can store key/value pairs locally within the user's browser, in a much more intuitive fashion than using cookies. The web storage provides two mechanisms for storing data on the client
+-  i. Local storage: It stores data for current origin with no expiration date.
+- ii. Session storage: It stores data for one session and the data is lost when the browser tab is closed.
+## 20)What is a post message?
+-  Post message is a method that enables cross-origin communication between Window objects.(i.e, between a page and a pop-up that it spawned, or between a page and an iframe embedded within it). Generally, scripts on different pages are allowed to access each other if and only if the pages follow same-origin policy(i.e, pages share the same protocol, port number, and host).
 ```
 
 
