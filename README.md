@@ -248,5 +248,94 @@ myFunction('Hello Mr.'); //output: Hello Mr.John
 -  Post message is a method that enables cross-origin communication between Window objects.(i.e, between a page and a pop-up that it spawned, or between a page and an iframe embedded within it). Generally, scripts on different pages are allowed to access each other if and only if the pages follow same-origin policy(i.e, pages share the same protocol, port number, and host).
 
 
+## 21)What is a Cookie?
+-   A cookie is a piece of data that is stored on your computer to be accessed by your browser.Cookies are saved as key/value pairs. For example, you can create a cookie named username as below,
+```bash
+ document.cookie = "username=John";  
+```
+## 22) Why do you need a Cookie?
+-  Cookies are used to remember information about the user profile(such as username). It basically involves two steps,
+- i. When a user visits a web page, the user profile can be stored in a cookie.
+-  ii. Next time the user visits the page, the cookie remembers the user profile.
+## 23)How do you delete a cookie?
+-  You can delete a cookie by setting the expiry date as a passed date. You don't need to specify a cookie value in this case. For example, you can delete a username cookie in the current page as below.
+```bash
+ document.cookie = "username=; expires=Fri, 07 Jun 2019 00:00:00 UTC; path=/;";
+ ```
+ - Note: You should define the cookie path option to ensure that you delete the right cookie. Some browsers doesn't allow to delete a cookie unless you specify a path parameter.
 
+## 24)What are the differences between cookie, local storage and session storage?
+|  Feature   | Cookie |  Local storage|    Session storage   |
+|----------|----------|----|---
+|   Accessed on client or server side    |  Both server-side & client side  | client-side only | client-side only |
+|   Lifetime    |  As configured using Expires option  | until deleted|  until tab is closed |
+|  SSL support   | Supported |  Not supported | Not supported |
+|   Maximum data size    |  4KB | 5MB | 5MB |
+
+
+## 25)How do you access web storage?
+-   The Window object implements the WindowLocalStorage and WindowSessionStorage objects which has localStorage (window.localStorage) and sessionStorage (window.sessionStorage) properties respectively. These properties create an instance of the Storage object, through which data items can be set, retrieved and removed for a specific domain and storage type (session or local). For example, you can read and write on local storage objects as below
+```bash
+localStorage.setItem('logo', document.getElementById('logo').value); 
+localStorage.getItem('logo'); 
+```
+
+
+## 26)Why do you need web storage?
+-  Web storage is more secure, and large amounts of data can be stored locally, without affecting website performance. Also, the information is never transferred to the server. Hence this is a more recommended approach than Cookies.
+## 27) What is a promise?
+- A promise is an object that may produce a single value some time in the future with either a resolved value or a reason that it’s not resolved(for example, network error). It will be in one of the 3 possible states: fulfilled, rejected, or pending.
+
+- The syntax of Promise creation looks like below,
+```bash
+const promise = new Promise(function(resolve, reject) { 
+// promise description 
+}) 
+```
+-  The usage of a promise would be as below,
+```bash
+const promise = new Promise(resolve => { 
+setTimeout(() => { 
+resolve("I'm a Promise!"); 
+}, 5000); 
+}, reject => { 
+}); 
+promise.then(value => console.log(value));
+```
+
+
+## 28) Why do you need a promise?
+-  Promises are used to handle asynchronous operations. They provide an alternative approach for callbacks by reducing the callback hell and writing the cleaner code.
+## 29)What is a callback function?
+- A callback function is a function passed into another function as an argument. This function is invoked inside the outer function to complete an action. Let's take a simple example of how to use callback function:
+```bash
+function callbackFunction(name) { 
+console.log('Hello ' + name); 
+} 
+function outerFunction(callback) { 
+let name = prompt('Please enter your name.'); 
+callback(name); 
+} 
+outerFunction(callbackFunction); 
+```
+## 30)Why do we need callbacks?
+- The callbacks are needed because javascript is an event driven language. That means instead of waiting for a response javascript will keep executing while listening for other events. Let's take an example with the first function invoking an API call(simulated by setTimeout) and the next function which logs the message.
+
+```bash
+function firstFunction(){ 
+  // Simulate a code delay 
+  setTimeout( function(){ 
+    console.log('First function called'); 
+  }, 1000 ); 
+} 
+function secondFunction(){ 
+  console.log('Second function called'); 
+} 
+firstFunction(); 
+secondFunction(); 
+Output 
+// Second function called 
+// First function called 
+```
+- As observed from the output, javascript didn't wait for the response of the first function and the remaining code block got executed. So callbacks are used in a way to make sure that certain code doesn’t execute until the other code finishes execution.
 
