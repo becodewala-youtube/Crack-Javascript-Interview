@@ -339,3 +339,95 @@ Output
 ```
 - As observed from the output, javascript didn't wait for the response of the first function and the remaining code block got executed. So callbacks are used in a way to make sure that certain code doesn’t execute until the other code finishes execution.
 
+
+
+## 31)What is a callback hell?
+- Callback Hell is an anti-pattern with multiple nested callbacks which makes code hard to read and debug when dealing with asynchronous logic. The callback hell looks like below,
+```bash
+async1(function(){ 
+    async2(function(){ 
+        async3(function(){ 
+            async4(function(){ 
+                .... 
+            }); 
+        }); 
+    }); 
+}); ;  
+```
+## 32) What are server-sent events?
+- Server-sent events (SSE) is a server push technology enabling a browser to receive automatic updates from a server via HTTP connection without resorting to polling. These are a one way  communications channel - events flow from server to client only. This has been used in Facebook/Twitter updates, stock price updates, news feeds etc.
+
+## 33)What is callback in callback?
+-   You can nest one callback inside in another callback to execute the actions sequentially one by one. This is known as callbacks in callbacks.
+```bash
+loadScript('/script1.js', function(script) { 
+   console.log('first script is loaded'); 
+  loadScript('/script2.js', function(script) { 
+    console.log('second script is loaded'); 
+    loadScript('/script3.js', function(script) { 
+        console.log('third script is loaded'); 
+      // after all scripts are loaded 
+    }); 
+  }) 
+});
+ ```
+ 
+
+## 34) What is promise chaining?
+
+- The process of executing a sequence of asynchronous tasks one after another using promises is known as Promise chaining. Let's take an example of promise chaining for calculating the final result,
+```bash
+new Promise(function(resolve, reject) { 
+  setTimeout(() => resolve(1), 1000); 
+}).then(function(result) { 
+  console.log(result); // 1 
+  return result * 2; 
+}).then(function(result) { 
+  console.log(result); // 2 
+  return result * 3; 
+}).then(function(result) { 
+  console.log(result); // 6 
+  return result * 4; 
+}); 
+```
+
+
+## 35)Why do you need strict mode?
+-   Strict mode is useful to write "secure" JavaScript by notifying "bad syntax" into real errors. For example, it eliminates accidentally creating a global variable by throwing an error and also throws an error for assignment to a non-writable property, a getter-only property, a non-existing property, a non-existing variable, or a non-existing object
+
+
+## 36) How do you declare strict mode?
+-  The strict mode is declared by adding "use strict"; to the beginning of a script or a function. If declared at the beginning of a script, it has global scope.
+```bash
+ "use strict"; 
+x = 3.14; // This will cause an error because x is not declared 
+and if you declare inside a function, it has local scope
+ x = 3.14;       
+myFunction(); 
+// This will not cause an error. 
+function myFunction() { 
+"use strict"; 
+y = 3.14;   // This will cause an error 
+} 
+```
+## 37) What is the difference between window and document?
+|  Window   | Document | |      
+|----------|----------|-
+|  It is the root level element in any web page    | It is the direct child of the window object. This is also known as Document Object Model(DOM) | 
+|By default window object is available implicitly in the page | You can access it via window.document or document.
+   | 
+|It has methods like alert(), confirm() and properties like document, location|It provides methods like getElementById,getElementByTagName, createElement etc|
+
+## 38) What are the differences between undeclared and undefined variables?
+|  undeclared   | undefined | |      
+|----------|----------|-
+|These variables do not exist in a program and are not declared   |These variables declared in the program but have not assigned any value
+| 
+|If you try to read the value of an undeclared variable, then a runtime error is encountered | If you try to read the value of an undefined variable, an undefined value is returned
+   | 
+
+
+## 39)What is event bubbling?
+- Event bubbling is a type of event propagation where the event first triggers on the innermost target element, and then successively triggers on the ancestors (parents) of the target element in the same nesting hierarchy till it reaches the outermost DOM element.
+## 40)What is same-origin policy?
+- The same-origin policy is a policy that prevents JavaScript from making requests across domain boundaries. An origin is defined as a combination of URI scheme, hostname, and port number. If you enable this policy then it prevents a malicious script on one page from obtaining access to sensitive data on another web page using Document Object Model(DOM).
