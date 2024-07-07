@@ -431,3 +431,82 @@ y = 3.14;   // This will cause an error
 - Event bubbling is a type of event propagation where the event first triggers on the innermost target element, and then successively triggers on the ancestors (parents) of the target element in the same nesting hierarchy till it reaches the outermost DOM element.
 ## 40)What is same-origin policy?
 - The same-origin policy is a policy that prevents JavaScript from making requests across domain boundaries. An origin is defined as a combination of URI scheme, hostname, and port number. If you enable this policy then it prevents a malicious script on one page from obtaining access to sensitive data on another web page using Document Object Model(DOM).
+
+## 41)What is the use of preventDefault method?
+- The preventDefault() method cancels the event if it is cancelable, meaning that the default action or behaviour that belongs to the event will not occur. For example, prevent form submission when clicking on submit button and prevent opening the page URL when clicking on hyperlink are some common use cases.
+```bash
+document.getElementById("link").addEventListener("click", function(event){
+event.preventDefault();
+});
+  
+```
+## 42) What is the use of stopPropagation method?
+- The stopPropagation method is used to stop the event from bubbling up the event chain. For example, the below nested divs with stopPropagation method prevents default event propagation when clicking on nested div(Div1)
+
+```bash
+<p>Click DIV1 Element</p>
+<div onclick="secondFunc()">DIV 2
+<div onclick="firstFunc(event)">DIV 1</div>
+</div>
+<script>
+function firstFunc(event) {
+alert("DIV 1");
+event.stopPropagation();
+}
+function secondFunc() {
+alert("DIV 2");
+}
+</script>
+```
+
+## 43What is BOM?
+- The Browser Object Model (BOM) allows JavaScript to "talk to" the browser. It consists of the objects navigator, history, screen, location and document which are children of the window. The Browser Object Model is not standardized and can change based on different browsers.
+## 44) What is the use of setTimeout?
+
+- The setTimeout() method is used to call a function or evaluate an expression after a specified number of milliseconds. For example, let's log a message after 2 seconds using setTimeout method,
+
+```bash
+setTimeout(function(){ console.log("Good morning"); }, 2000); 
+```
+
+
+## 45)What is the use of setInterval?
+- The setInterval() method is used to call a function or evaluate an expression at specified intervals (in milliseconds). For example, let's log a message after 2 seconds using setInterval method,
+
+```bash
+setInterval(function(){ console.log("Good morning"); }, 2000);
+```
+
+## 46)Why is JavaScript treated as Single threaded?
+- JavaScript is a single-threaded language. Because the language specification does not allow the programmer to write code so that the interpreter can run parts of it in parallel in multiple threads or processes. Whereas languages like java, go, C++ can make multi-threaded and multi-process programs.
+
+## 47) What is an event delegation?
+- Event delegation is a technique for listening to events where you delegate a parent element as the listener for all of the events that happen inside it. For example, if you wanted to detect field changes in inside a specific form, you can use event delegation technique,
+```bash
+var form = document.querySelector('#registration-form');
+// Listen for changes to fields inside the form
+form.addEventListener('input', function (event) {
+// Log the field that was changed
+console.log(event.target);
+}, false);
+```
+## 48)What is JSON?
+- JSON (JavaScript Object Notation) is a lightweight format that is used for data interchanging. It is based on a subset of JavaScript language in the way objects are built in JavaScript.
+
+
+## 49)What is the purpose JSON stringify?
+- When sending data to a web server, the data has to be in a string format. You can achieve this by converting JSON object into a string using stringify() method.
+
+```bash
+var userJSON = {'name': 'John', age: 31}
+var userString = JSON.stringify(user);
+console.log(userString); //"{"name":"John","age":31}"
+```
+## 50)How do you parse JSON string?
+- When receiving the data from a web server, the data is always in a string format. But you can convert this string value to a javascript object using parse() method.
+
+```bash
+var userString = '{"name":"John","age":31}';
+var userJSON = JSON.parse(userString);
+console.log(userJSON);// {name: "John", age: 31}
+```
