@@ -510,3 +510,90 @@ var userString = '{"name":"John","age":31}';
 var userJSON = JSON.parse(userString);
 console.log(userJSON);// {name: "John", age: 31}
 ```
+
+## 51)Why do you need JSON?
+- When exchanging data between a browser and a server, the data can only be text. Since JSON is text only, it can easily be sent to and from a server, and used as a data format by any programming language.
+## 52)  What is the purpose of clearInterval method?
+- The clearInterval() function is used in javascript to clear the interval which has been set by setInterval() function. i.e, The return value returned by setInterval() function is stored in a variable and it’s passed into the clearInterval() function to clear the interval. For example, the below setInterval method is used to display the message for every 3 seconds. This interval can be cleared by the clearInterval() method.
+
+
+```bash
+<script>
+var msg;
+function greeting() {
+alert('Good morning');
+}
+function start() {
+msg = setInterval(greeting, 3000);
+}
+function stop() {
+clearInterval(msg);
+}
+</script>
+
+```
+
+## 53) What are the various url properties of location object?
+- The below Location object properties can be used to access URL components of the page,
+-  href - The entire URL
+- protocol - The protocol of the URL
+- host - The hostname and port of the URL
+- hostname - The hostname of the URL
+- port - The port number in the URL
+- pathname - The path name of the URL
+- search - The query portion of the URL
+- hash - The anchor portion of the URL
+## 54) What is a polyfill?
+
+- A polyfill is a piece of JS code used to provide modern functionality on older browsers that do not natively support it. For example, Silverlight plugin polyfill can be used to mimic the functionality of an HTML Canvas element on Microsoft Internet Explorer 7
+
+
+## 55) What is tree shaking?
+- Tree shaking is a form of dead code elimination. It means that unused modules will not be included in the bundle during the build process and for that it relies on the static structure of ES2015 module syntax,( i.e. import and export). Initially this has been popularized by the ES2015 module bundler rollup .
+
+## 56)What is the need of tree shaking?
+- Tree Shaking can significantly reduce the code size in any application. i.e, The less code we send over the wire the more performant the application will be. For example, if we just want to create a “Hello World” Application using SPA frameworks then it will take around a few MBs, but by tree shaking it can bring down the size to just a few hundred KBs. Tree shaking is implemented in Rollup and Webpack bundlers.
+
+## 57) What is a Regular Expression?
+- A regular expression is a sequence of characters that forms a search pattern. You can use this search pattern for searching data in a text. These can be used to perform all types of text search and text replace operations. Let's see the syntax format now,
+```bash
+/pattern/modifiers;
+```
+- For example, the regular expression or search pattern with case-insensitive username would be,
+```bash
+/John/i
+```
+## 58)How do you make synchronous HTTP request?
+- Browsers provide an XMLHttpRequest object which can be used to make synchronous HTTP requests from JavaScript
+```bash
+function httpGet(theUrl)
+{
+var xmlHttpReq = new XMLHttpRequest();
+xmlHttpReq.open( "GET", theUrl, false ); // false for synchronous request
+xmlHttpReq.send( null );
+return xmlHttpReq.responseText;
+}
+```
+
+## 59) How do you make asynchronous HTTP request?
+- Browsers provide an XMLHttpRequest object which can be used to make asynchronous HTTP requests from JavaScript by passing the 3rd parameter as true.
+
+
+```bash
+function httpGetAsync(theUrl, callback)
+{
+var xmlHttpReq = new XMLHttpRequest();
+xmlHttpReq.onreadystatechange = function() {
+if (xmlHttpReq.readyState == 4 && xmlHttpReq.status == 200)
+callback(xmlHttpReq.responseText);
+}
+xmlHttp.open("GET", theUrl, true); // true for asynchronous
+xmlHttp.send(null);
+}
+```
+## 60)What is a conditional operator in javascript?
+- The conditional (ternary) operator is the only JavaScript operator that takes three operands which acts as a shortcut for if statements.
+```bash
+var isAuthenticated = false;
+console.log(isAuthenticated ? 'Hello, welcome' : 'Sorry, you are not authenticated'); 
+```
