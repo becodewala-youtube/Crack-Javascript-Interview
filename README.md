@@ -597,3 +597,150 @@ xmlHttp.send(null);
 var isAuthenticated = false;
 console.log(isAuthenticated ? 'Hello, welcome' : 'Sorry, you are not authenticated'); 
 ```
+
+
+## 61) Can you apply chaining on conditional operator?
+- Yes, you can apply chaining on conditional operators similar to if … else if … else if … else chain.The syntax is going to be as below,
+```bash
+function traceValue(someParam) {
+return condition1 ? value1
+: condition2 ? value2
+: condition3 ? value3
+: value4;
+}
+// The above conditional operator is equivalent to:
+function traceValue(someParam) {
+if (condition1) { return value1; }
+else if (condition2) { return value2; }
+else if (condition3) { return value3; }
+else { return value4; }
+}
+```
+
+
+## 62) What are the ways to execute javascript after page load?
+- You can execute javascript after page load in many different ways,
+### i. window.onload:
+```bash
+window.onload = function ...
+```
+
+### ii. document.onload:
+```bash
+document.onload = function ...
+```
+
+### iii. body onload:
+```bash
+<body onload="script();">
+```
+
+## 63) What is a freeze method?
+- The freeze() method is used to freeze an object. Freezing an object does not allow adding new properties to an object,prevents from removing and prevents changing the enumerability, configurability, or writability of existing properties. i.e, It returns the passed object and does not create a frozen copy.
+```bash
+const obj = {
+prop: 100
+};
+Object.freeze(obj);
+obj.prop = 200; // Throws an error in strict mode
+console.log(obj.prop); //100
+```
+## 64) How do you detect a browser language preference?
+- You can use navigator object to detect a browser language preference as below
+```bash
+var language = navigator.languages && navigator.languages[0] || // Chrome / Firefox
+navigator.language || // All browsers
+navigator.userLanguage; // IE <= 10
+console.log(language);
+```
+
+
+## 65)  How do you detect javascript disabled in the page?
+- You can use the <noscript> tag to detect javascript disabled or not. The code block inside <noscript> gets executed when JavaScript is disabled, and is typically used to display alternative content when the page generated in JavaScript.
+```bash
+<script type="javascript">
+// JS related code goes here
+</script>
+<noscript>
+<a href="next_page.html?noJS=true">JavaScript is disabled in the page. Please click Ne
+</noscript>
+```
+
+## 66)What is a rest parameter?
+- Rest parameter is an improved way to handle function parameters which allows us to represent an indefinite number of arguments as an array. The syntax would be as below,
+```bash
+function f(a, b, ...theArgs) {
+// ...
+}
+```
+- For example, let's take a sum example to calculate on dynamic number of parameters,
+```bash
+function total(…args){
+let sum = 0;
+for(let i of args){
+sum+=i;
+}
+return sum;
+}
+console.log(fun(1,2)); //3
+console.log(fun(1,2,3)); //6
+console.log(fun(1,2,3,4)); //13
+console.log(fun(1,2,3,4,5)); //15
+```
+
+
+## 67) What is a spread operator?
+- Spread operator allows iterables( arrays / objects / strings ) to be expanded into single arguments/elements. Let's take an example to see this behavior,
+```bash
+function calculateSum(x, y, z) {
+return x + y + z;
+}
+const numbers = [1, 2, 3];
+console.log(calculateSum(...numbers)); // 6
+
+```
+## 68)What is the purpose of using object is method?
+### Some of the applications of Object's is method are follows,
+- i. It is used for comparison of two strings.
+- ii. It is used for comparison of two numbers.
+- iii. It is used for comparing the polarity of two numbers.
+- iv. It is used for comparison of two objects.
+
+
+## 69) How do you copy properties from one object to other?
+- You can use the Object.assign() method which is used to copy the values and properties from one or more source objects to a target object. It returns the target object which has properties and values copied from the target object. The syntax would be as below
+```bash
+Object.assign(target, ...sources)
+
+```
+- Let's take example with one source and one target object,
+
+```bash
+const target = { a: 1, b: 2 };
+const source = { b: 3, c: 4 };
+const returnedTarget = Object.assign(target, source);
+console.log(target); // { a: 1, b: 3, c: 4 }
+console.log(returnedTarget); // { a: 1, b: 3, c: 4 }
+```
+## 70)What is a proxy object?
+- The Proxy object is used to define custom behavior for fundamental operations such as property lookup, assignment, enumeration, function invocation, etc. The syntax would be as follows,
+```bash
+ var p = new Proxy(target, handler);
+ ```
+ - Let's take an example of proxy object,
+
+```bash
+var handler = {
+get: function(obj, prop) {
+return prop in obj ?
+obj[prop] :
+100;
+}
+};
+var p = new Proxy({}, handler);
+p.a = 10;
+p.b = null;
+console.log(p.a, p.b); // 10, null
+console.log('c' in p, p.c); // false, 100
+
+```
