@@ -744,3 +744,138 @@ console.log(p.a, p.b); // 10, null
 console.log('c' in p, p.c); // false, 100
 
 ```
+
+## 71) How can you get the list of keys of any object?
+- You can use the Object.keys() method which is used to return an array of a given object's own property names, in the same order as we get with a normal loop. For example, you can get the keys of a user object,
+
+```bash
+const user = {
+name: 'John',
+gender: 'male',
+age: 40
+};
+console.log(Object.keys(user)); //['name', 'gender', 'age']
+
+```
+
+
+## 72) How do you create an object with prototype?
+- The Object.create() method is used to create a new object with the specified prototype object and properties. i.e, It uses an existing object as the prototype of the newly created object. It returns a new object with the specified prototype object and properties.
+```bash
+const user = {
+name: 'John',
+printInfo: function () {
+console.log(`My name is ${this.name}.`);
+}
+};
+const admin = Object.create(user);
+admin.name = "Nick"; // Remember that "name" is a property set on "admin" but not on "use
+admin.printInfo(); // My name is Nick
+
+```
+
+## 73) What are the differences between WeakMap and Map?
+- The main difference is that references to key objects in Map are strong while references to key objects in WeakMap are weak. i.e, A key object in WeakMap can be garbage collected if there is no other reference to it. Other differences are,
+- i. Maps can store any key type Whereas WeakMaps can store only collections of key objects
+- ii. WeakMap does not have size property unlike Map
+- iii. WeakMap does not have methods such as clear, keys, values, entries, forEach.
+- iv. WeakMap is not iterable.
+## 74) How do you encode an URL?
+- The encodeURI() function is used to encode complete URI which has special characters except (, / ? : @ & = + $ #) characters.
+
+```bash
+var uri = 'https://mozilla.org/?x=шеллы';
+var encoded = encodeURI(uri);
+console.log(encoded); // https://mozilla.org/?x=%D1%88%D0%B5%D0%BB%D0%BB%D1%8B
+```
+
+
+## 75)  How do you decode an URL?
+- The decodeURI() function is used to decode a Uniform Resource Identifier (URI) previously created by encodeURI().
+
+```bash
+var uri = 'https://mozilla.org/?x=шеллы';
+var encoded = encodeURI(uri);
+console.log(encoded); // https://mozilla.org/?x=%D1%88%D0%B5%D0%BB%D0%BB%D1%8B
+try {
+console.log(decodeURI(encoded)); // "https://mozilla.org/?x=шеллы"
+} catch(e) { // catches a malformed URI
+console.error(e);
+}
+
+```
+
+## 76)What is an anonymous function?
+- An anonymous function is a function without a name! Anonymous functions are commonly assigned to a variable name or used as a callback function. The syntax would be as below,
+```bash
+function (optionalParameters) {
+//do something
+}
+const myFunction = function(){ //Anonymous function assigned to a variable
+//do something
+};
+[1, 2, 3].map(function(element){ //Anonymous function used as a callback function
+//do something
+});
+```
+- Let's see the above anonymous function in an example,
+```bash
+var x = function (a, b) {return a * b};
+var z = x(5, 10);
+console.log(z); // 50
+```
+
+
+## 77) What is a spread operator?
+- Spread operator allows iterables( arrays / objects / strings ) to be expanded into single arguments/elements. Let's take an example to see this behavior,
+```bash
+function calculateSum(x, y, z) {
+return x + y + z;
+}
+const numbers = [1, 2, 3];
+console.log(calculateSum(...numbers)); // 6
+
+```
+## 78)How do you define property on Object constructor?
+- The Object.defineProperty() static method is used to define a new property directly on an object,or modify an existing property on an object, and returns the object. Let's see an example to know how to define property,
+```bash
+const newObject = {};
+Object.defineProperty(newObject, 'newProperty', {
+value: 100,
+writable: false
+});
+console.log(newObject.newProperty); // 100
+newObject.newProperty = 200; // It throws an error in strict mode due to writable setting
+
+```
+## 79) What are the advantages of Getters and Setters?
+- Below are the list of benefits of Getters and Setters,
+- i. They provide simpler syntax
+- ii. They are used for defining computed properties, or accessors in JS.
+- iii. Useful to provide equivalence relation between properties and methods
+- iv. They can provide better data quality
+- v. Useful for doing things behind the scenes with the encapsulated logic.
+
+## 80)What is the purpose of switch-case?
+- The switch case statement in JavaScript is used for decision making purposes. In a few cases, using the switch case statement is going to be more convenient than if-else statements. The syntax would be as below
+```bash
+ switch (expression)
+{
+case value1:
+statement1;
+break;
+case value2:
+statement2;
+break;
+.
+.
+case valueN:
+statementN;
+break;
+default:
+statementDefault;
+}
+
+ ```
+- The above multi-way branch statement provides an easy way to dispatch execution to different parts of code based on the value of the expression.
+
