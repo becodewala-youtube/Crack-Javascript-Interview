@@ -879,3 +879,115 @@ statementDefault;
  ```
 - The above multi-way branch statement provides an easy way to dispatch execution to different parts of code based on the value of the expression.
 
+
+## 81) What are primitive data types?
+- A primitive data type is data that has a primitive value (which has no properties or methods).
+- There are 7 types of primitive data types.
+- i. string
+- ii. number
+- iii. boolean
+- iv. null
+- v. undefined
+- vi. bigint
+- vii. symbol
+
+## 82) What are the different ways to access object properties?
+#### There are 3 possible ways for accessing the property of an object.
+- i. Dot notation: It uses dot for accessing the properties
+```bash
+objectName.property
+```
+- ii. Square brackets notation: It uses square brackets for property access
+```bash
+objectName["property"]
+```
+- iii. Expression notation: It uses expression in the square brackets
+```bash
+objectName[expression]
+```
+
+
+## 83)What are the different error names from error object?
+- There are 6 different types of error names returned from error object,
+|  Error Name  | Description| |      
+|----------|----------|-
+|  EvalError   | An error has occurred in the eval() function  | 
+| RangeError  |  An error has occurred with a number "out of range"   | 
+|ReferenceError |An error due to an illegal reference
+|
+|SyntaxError |An error due to a syntax error
+|
+|TypeError |An error due to a type error
+|
+|URIError|An error due to encodeURI()|
+
+## 84)What are the various statements in error handling?
+### Below are the list of statements used in an error handling,
+- i. try: This statement is used to test a block of code for errors
+- ii. catch: This statement is used to handle the error
+- iii. throw: This statement is used to create custom errors.
+- iv. finally: This statement is used to execute code after try and catch regardless of the result.
+
+## 85) What is an event loop?
+- The Event Loop is a queue of callback functions. When an async function executes, the callback function is pushed into the queue. The JavaScript engine doesn't start processing the event loop until the async function has finished executing the code. Note: It allows Node.js to perform nonblocking I/O operations even though JavaScript is single-threaded.
+
+
+## 86)What is call stack?
+- Call Stack is a data structure for javascript interpreters to keep track of function calls in the program. It has two major actions,
+- i. Whenever you call a function for its execution, you are pushing it to the stack.
+- ii. Whenever the execution is completed, the function is popped out of the stack.
+#### Let's take an example and it's state representation in a diagram format
+```bash
+function hungry() {
+eatFruits();
+}
+function eatFruits() {
+return "I'm eating fruits";
+}
+// Invoke the `hungry` function
+hungry();
+```
+#### The above code processed in a call stack as below,
+- i. Add the hungry() function to the call stack list and execute the code.
+- ii. Add the eatFruits() function to the call stack list and execute the code.
+- iii. Delete the eatFruits() function from our call stack list.
+- iv. Delete the hungry() function from the call stack list since there are no items anymore.
+
+## 87)  How do you reversing an array?
+- You can use the reverse() method to reverse the elements in an array. This method is useful to sort an array in descending order. Let's see the usage of reverse() method in an example,
+
+```bash
+let numbers = [1, 2, 5, 3, 4];
+numbers.sort((a, b) => b - a);
+numbers.reverse();
+console.log(numbers); // [1, 2, 3, 4 ,5]
+```
+## 88)How do you find min and max value in an array?
+- You can use Math.min and Math.max methods on array variables to find the minimum and maximum elements within an array. Let's create two functions to find the min and max value with in an array,
+```bash
+var marks = [50, 20, 70, 60, 45, 30];
+function findMin(arr) {
+return Math.min.apply(null, arr);
+}
+function findMax(arr) {
+return Math.max.apply(null, arr);
+}
+console.log(findMin(marks));
+console.log(findMax(marks));
+```
+## 89)What are the advantages of typescript over javascript?
+####  Below are some of the advantages of typescript over javascript,
+- i. TypeScript is able to find compile time errors at the development time only and it makes sure less runtime errors. Whereas javascript is an interpreted language.
+- ii. TypeScript is strongly-typed or supports static typing which allows for checking type correctness at compile time. This is not available in javascript.
+- iii. TypeScript compiler can compile the .ts files into ES3,ES4 and ES5 unlike ES6 features of javascript which may not be supported in some browsers.
+## 90)What is a constructor method?
+- The constructor method is a special method for creating and initializing an object created within a class. If you do not specify a constructor method, a default constructor is used. The example usage of constructor would be as below.
+```bash
+class Employee {
+constructor() {
+this.name = "John";
+}
+}
+var employeeObject = new Employee();
+console.log(employeeObject.name); // John
+```
