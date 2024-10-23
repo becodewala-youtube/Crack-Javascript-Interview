@@ -991,3 +991,122 @@ this.name = "John";
 var employeeObject = new Employee();
 console.log(employeeObject.name); // John
 ```
+
+## 91)What happens if you write constructor more than once in a class?
+- The "constructor" in a class is a special method and it should be defined only once in a class. i.e,
+- If you write a constructor method more than once in a class it will throw a SyntaxError error.
+
+```bash
+class Employee {
+constructor() {
+this.name = "John";
+}
+constructor() { // Uncaught SyntaxError: A class may only have one constructor
+this.age = 30;
+}
+}
+var employeeObject = new Employee();
+console.log(employeeObject.name);
+```
+## 92)How do you call the constructor of a parent class?
+
+- You can use the super keyword to call the constructor of a parent class. Remember that
+- super() must be called before using 'this' reference. Otherwise it will cause a reference error.
+- Let's the usage of it,
+```bash
+class Square extends Rectangle {
+constructor(length) {
+super(length, length);
+this.name = 'Square';
+}
+get area() {
+return this.width * this.height;
+}
+set area(value) {
+this.area = value;
+}
+}
+```
+## 93)What Is Obfuscation in javascript?
+- Obfuscation is the deliberate act of creating obfuscated javascript code(i.e, source or machine code) that is difficult for humans to understand. It is something similar to encryption, but a machine can understand the code and execute it. Let's see the below function before Obfuscation,
+```bash
+function greeting() {
+console.log('Hello, welcome to JS world');
+}
+```
+- And after the code Obfuscation, it would be appeared as below,
+```bash
+eval(function(p,a,c,k,e,d){e=function(c){return c};if(!''.replace(/^/,String)){while(c--){
+```
+## 94)Why do you need Obfuscation?
+- Below are the few reasons for Obfuscation,
+- i. The Code size will be reduced. So data transfers between server and client will be fast.
+- ii. It hides the business logic from outside world and protects the code from others
+- iii. Reverse engineering is highly difficult
+- iv. The download time will be reduced
+## 95)How do you perform form validation using javascript?
+- JavaScript can be used to perform HTML form validation. For example, if the form field is empty, the function needs to notify, and return false, to prevent the form being submitted. Lets' perform user login in an html form,
+```bash
+<form name="myForm" onsubmit="return validateForm()" method="post">
+User name: <input type="text" name="uname">
+<input type="submit" value="Submit">
+</form>
+And the validation on user login is below,
+function validateForm() {
+var x = document.forms["myForm"]["uname"].value;
+if (x == "") {
+alert("The username shouldn't be empty");
+return false;
+}
+}
+```
+## 96) Is enums feature available in javascript?
+- No, javascript does not natively support enums. But there are different kinds of solutions to simulate them even though they may not provide exact equivalents. For example, you can use freeze or seal on object,
+```bash
+var DaysEnum = Object.freeze({"monday":1, "tuesday":2, "wednesday":3, ...})
+```
+## 97)What is an enum ?
+- An enum is a type restricting variables to one value from a predefined set of constants.
+- JavaScript has no enums but typescript provides built-in enum support.
+```bash
+enum Color {
+RED, GREEN, BLUE
+}
+```
+## 98) How do you extend classes?
+- The extends keyword is used in class declarations/expressions to create a class which is a child of another class. It can be used to subclass custom classes as well as built-in objects. The syntax would be as below,
+```bash
+class ChildClass extends ParentClass { ... }
+```
+- Let's take an example of Square subclass from Polygon parent class,
+```bash
+class Square extends Rectangle {
+constructor(length) {
+super(length, length);
+this.name = 'Square';
+}
+get area() {
+return this.width * this.height;
+}
+set area(value) {
+this.area = value;
+}
+}
+```
+## 99)How to get the value from get parameters?
+- The new URL() object accepts the url string and searchParams property of this object can be used to access the get parameters. Remember that you may need to use polyfill orwindow.location to access the URL in older browsers(including IE).
+```bash
+let urlString = "http://www.some-domain.com/about.html?x=1&y=2&z=3"; //window.location.hre
+let url = new URL(urlString);
+let parameterZ = url.searchParams.get("z");
+console.log(parameterZ); // 3
+```
+## 100)What is jQuery?
+- jQuery is a popular cross-browser JavaScript library that provides Document Object Model(DOM) traversal, event handling, animations and AJAX interactions by minimizing the discrepancies across browsers. It is widely famous with its philosophy of “Write less, do more”.
+- For example, you can display welcome message on the page load using jQuery as below,
+```bash
+$(document).ready(function(){ // It selects the document and apply the function on page lo
+alert('Welcome to jQuery world');
+});
+```
+- Note: You can download it from jquery's official site or install it from CDNs, like google
